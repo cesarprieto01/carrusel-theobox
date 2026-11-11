@@ -1,0 +1,70 @@
+/* Developer mode for the TheoBox section (prototype only) · Theo visual style */
+#devBtn{position:fixed;top:20px;right:150px;z-index:100;height:44px;padding:0 18px;border-radius:22px;border:1px solid rgba(2,37,79,.15);background:#FCFBF7;color:#02254F;font:700 15px 'Neue Montreal',Mulish,sans-serif;cursor:pointer;box-shadow:0 6px 16px rgba(2,37,79,.12)}
+#devBtn.on{background:#1E8DA5;border-color:#1E8DA5;color:#fff}
+@media (max-width:760px){#devBtn{display:none}}
+
+
+/* marks on the phone */
+#devLayer{position:absolute;inset:0;z-index:95;pointer-events:none}
+.dv-r{position:absolute;box-sizing:border-box;border-radius:2px}
+.dv-r.hov{border:1px solid #1E8DA5;background:rgba(30,141,165,.07)}
+.dv-r.sel{border:1.5px solid #1E8DA5;box-shadow:0 0 0 1px rgba(255,255,255,.7)}
+.dv-tag{position:absolute;left:50%;top:100%;transform:translate(-50%,4px);background:#1E8DA5;color:#fff;font:600 10px/16px 'Neue Montreal',Mulish,sans-serif;padding:0 6px;border-radius:4px;white-space:nowrap}
+.dv-d{position:absolute;background:#E4572E}
+.dv-d.h{height:1px}.dv-d.v{width:1px}
+.dv-d span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#E4572E;color:#fff;font:600 10px/15px 'Neue Montreal',Mulish,sans-serif;padding:0 5px;border-radius:4px;white-space:nowrap}
+
+/* panel next to the phone, same height (like the Adviento prototype) */
+#devPanel{position:relative;flex:none;width:400px;height:856px;margin-left:32px;display:flex;flex-direction:column;background:#FFFFFF;color:#02254F;border-radius:36px;box-shadow:0 30px 60px -30px rgba(2,37,79,.35);font:14px/20px Mulish,system-ui,sans-serif;overflow:hidden}
+@media (max-width:900px){#devPanel{display:none}}
+@media (min-width:901px){#devBtn,#temaBtn{display:none!important}}
+#devPanel header{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:24px 20px 6px}
+.dv-title{display:flex;align-items:center;gap:8px}
+.dv-title b{font:700 26px/30px 'Neue Montreal',Mulish,sans-serif;letter-spacing:-.4px;color:#00516D}
+.dv-title em{font:700 12px/22px 'Neue Montreal',Mulish,sans-serif;font-style:normal;letter-spacing:.6px;text-transform:uppercase;color:#06325A;background:#F5DB78;border-radius:11px;padding:0 9px}
+.dv-icons{display:flex;gap:6px}
+.dv-seg{display:flex;background:#E4F2FC;border-radius:14px;padding:3px}
+.dv-seg button,.dv-ic{width:36px;height:36px;border:0;border-radius:12px;background:transparent;display:grid;place-items:center;cursor:pointer;color:#00516D}
+.dv-seg button.on{background:#FFFFFF;box-shadow:0 2px 6px rgba(2,37,79,.12)}
+.dv-ic{background:#E4F2FC;width:42px;height:42px;border-radius:13px}
+.dv-ic.on{background:#1E8DA5;color:#fff}
+.dv-ic.ok{background:#F5DB78;color:#06325A}
+#devPanel header svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.dv-where{margin:0;padding:0 22px 14px;color:#4A6786;font-size:15px}
+.dv-where b{color:#00516D}
+.dv-top{display:flex;gap:8px;padding:0 22px 14px;border-bottom:1px solid rgba(2,37,79,.08)}
+.dv-top[hidden]{display:none}
+.dv-body{flex:1;overflow:auto;padding:16px 22px;border-top:1px solid rgba(2,37,79,.08)}
+.dv-body h3{margin:0 0 14px;font:700 18px/22px 'Neue Montreal',Mulish,sans-serif;color:#00516D}
+.dv-hint{margin:0;color:#4A6786;line-height:20px}
+.dv-hint b{color:#00516D}
+.dv-grp{margin-bottom:16px;padding:14px;border:1px solid rgba(2,37,79,.08);border-radius:20px}
+.dv-grp h4{margin:0 0 10px;font:700 15px/20px 'Neue Montreal',Mulish,sans-serif;color:#1E8DA5}
+.dv-row{display:flex;justify-content:space-between;gap:12px;padding:3px 0}
+.dv-row span{color:#4A6786;flex:none}
+.dv-row b{font:600 13px/18px Mulish,system-ui,sans-serif;font-variant-numeric:tabular-nums;color:#02254F;text-align:right;word-break:break-word;display:flex;align-items:center;gap:6px;justify-content:flex-end}
+.dv-row i{width:14px;height:14px;border-radius:4px;border:1px solid rgba(2,37,79,.15);flex:none}
+.dv-thumb,.dv-mini{border-radius:14px;border:1px solid rgba(2,37,79,.08);display:grid;place-items:center;overflow:hidden;
+  background-color:#fff;background-image:linear-gradient(45deg,#EDF2F5 25%,transparent 25%,transparent 75%,#EDF2F5 75%),linear-gradient(45deg,#EDF2F5 25%,transparent 25%,transparent 75%,#EDF2F5 75%);background-size:14px 14px;background-position:0 0,7px 7px}
+.dv-thumb{height:150px;margin-bottom:10px}
+.dv-thumb img{max-width:90%;max-height:136px;object-fit:contain;filter:drop-shadow(0 6px 8px rgba(2,37,79,.15))}
+.dv-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dv-asset{display:flex;flex-direction:column;gap:6px}
+.dv-mini{height:96px}
+.dv-mini img{max-width:86%;max-height:84px;object-fit:contain}
+.dv-asset b{font:600 12px/16px Mulish,sans-serif;color:#02254F}
+.dv-asset span{display:flex;gap:6px}
+.dv-asset a{font:700 11px/22px 'Neue Montreal',Mulish,sans-serif;color:#00516D;background:#E4F2FC;border-radius:8px;padding:0 8px;text-decoration:none}
+.dv-note{margin:0 0 10px;color:#02254F;font-weight:600}
+.dv-note span{font-weight:500;font-size:12px;color:#4A6786}
+.dv-btns{display:flex;flex-wrap:wrap;gap:8px}
+.dv-b{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:38px;padding:0 16px;border-radius:12px;border:0;background:#F5DB78;color:#06325A;font:700 14px 'Neue Montreal',Mulish,sans-serif;text-decoration:none;cursor:pointer}
+.dv-b svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-b:active{transform:scale(.97)}
+.dv-b.ghost{background:#E4F2FC;color:#00516D}
+.dv-b.ghost.on{background:#1E8DA5;color:#fff}
+#devPanel footer{padding:12px 22px 18px;border-top:1px solid rgba(2,37,79,.08);color:#4A6786;font-size:11px;line-height:15px}
+
+/* in developer mode the section stays still so measures are stable */
+body.dev-on #tbx *{animation:none!important;transition:none!important}
+body.dev-on #tbx.pre .tbx-card,body.dev-on #tbx.pre .hero-box .hf{opacity:1!important;transform:none}
