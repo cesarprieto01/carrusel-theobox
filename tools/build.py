@@ -12,10 +12,10 @@ TEMAS = {
     "claro": dict(src="source/home-light.html", out="theobox.html",
                   titulo="#00516D", texto="#2F5B6B", tile="#FFFFFF", curva="#B4DDE9",
                   acento="#1E8DA5", borde="transparent", sombra="0 6px 16px rgba(0,81,109,.10)", crema="#FFFFFF", onda="#EEFCFD", oro="#A8791C", nuevo="#1E8DA5", estrella="#D1A32C",
-                  hoja="#FCFBF7"),
+                  hoja="#FCFBF7", aviso="#02254F", aviso_tx="#FFFFFF", aviso_sub="rgba(255,255,255,.72)"),
     "oscuro": dict(src="source/home-dark.html", out="theobox-oscuro.html",
                    titulo="#FFFFFF", texto="#C3CCDA", tile="#0C244C", curva="#1C3C78",
-                   acento="#6CC3D6", borde="transparent", sombra="none", crema="#0C244C", onda="#0B1D4A", oro="#F5DB78", nuevo="#6CC3D6", estrella="#F5DB78", hoja="#FCFBF7"),
+                   acento="#6CC3D6", borde="transparent", sombra="none", crema="#0C244C", onda="#0B1D4A", oro="#F5DB78", nuevo="#6CC3D6", estrella="#F5DB78", hoja="#FCFBF7", aviso="#FCFBF7", aviso_tx="#02254F", aviso_sub="#4A6786"),
 }
 
 FIGS = [("jesus","Jesus"),("theodore","Theodore"),("david","David"),("noah","Noah"),
@@ -27,20 +27,20 @@ NOMBRES = {"jesus":"Jesus","theodore":"Theodore the Donkey","david":"David","noa
 
 def seccion(c):
     tiles = []
-    tiles.append('<button class="tbx-card dbl" data-id="lifestyle" data-pos="1" data-dest="theobox_overview" aria-label="How TheoBox works">'
+    tiles.append('<button class="tbx-card dbl" data-id="lifestyle" data-pos="1" data-dest="theobox_web" aria-label="How TheoBox works. Opens in your browser">'
                  '<span class="sq"><img class="ph" src="assets/theobox/theobox-paso2-coloca.webp" alt=""><span class="hsc"></span>'
-                 '<span class="hw">How it works</span></span><span class="lb">Learn more</span></button>')
+                 '<span class="hw">How it works</span></span><span class="lb">Learn more<svg class="ext" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span></button>')
     for i,(fid,corto) in enumerate(FIGS, start=2):
-        tiles.append(f'<button class="tbx-card" data-id="{fid}" data-pos="{i}" data-dest="figure_{fid}" aria-label="{NOMBRES[fid]}, Theoling figure">'
+        tiles.append(f'<button class="tbx-card" data-id="{fid}" data-pos="{i}" data-dest="theobox_web" aria-label="{NOMBRES[fid]}, Theoling figure. Opens in your browser">'
                      f'<span class="sq"><span class="cv"></span><img class="fg" src="assets/theobox/fig-{fid}.webp" alt=""></span>'
                      f'<span class="lb">{corto}</span></button>')
-    tiles.append('<button class="tbx-card dbl buy" data-id="complete_box" data-pos="11" data-dest="pack_selection" aria-label="Bring TheoBox home. Choose yours">'
-                 '<span class="sq"><span class="bt"><b>Bring<br>TheoBox home</b><span class="btn">Choose yours →</span></span>'
+    tiles.append('<button class="tbx-card dbl buy" data-id="complete_box" data-pos="11" data-dest="theobox_web" aria-label="Bring TheoBox home. Choose yours. Opens in your browser">'
+                 '<span class="sq"><span class="bt"><b>Bring<br>TheoBox home</b><span class="btn">Choose yours<svg class="ext" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span></span>'
                  '<span class="prod"><img class="sp" src="assets/theobox/theobox-frente.webp" alt=""><img class="f1" src="assets/theobox/fig-jesus.webp" alt="">'
                  '<img class="f3" src="assets/theobox/fig-theodore.webp" alt=""></span></span>'
-                 '<span class="lb">Shop TheoBox</span></button>')
+                 '<span class="lb">Shop TheoBox<svg class="ext" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span></button>')
     return f'''<section id="tbx" aria-label="TheoBox" style="position: absolute; left: 0; top: {TOP}px; width: 390px; height: {ALTO}px; z-index: 2; padding-top: 31px; box-sizing: border-box">
-<svg class="tbx-onda" viewBox="0 0 390 {ALTO}" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="tbxGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{c['onda']}" stop-opacity="1"/><stop offset=".55" stop-color="{c['onda']}" stop-opacity=".6"/><stop offset="1" stop-color="{c['onda']}" stop-opacity="0"/></linearGradient></defs><path d="M0,16 C45,9 95,8 140,13 C190,19 250,20 300,13 C335,9 365,9 390,11 L390,{ALTO - 16} C350,{ALTO - 21} 300,{ALTO - 19} 255,{ALTO - 13} C205,{ALTO - 6} 130,{ALTO - 5} 80,{ALTO - 12} C50,{ALTO - 16} 25,{ALTO - 17} 0,{ALTO - 14} Z" fill="url(#tbxGrad)"/></svg><div class="tbx-h"><div class="tbx-tx"><span class="tbx-new"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.1 6.4 6.4 2.1-6.4 2.1L12 19.5l-2.1-6.4L3.5 11l6.4-2.1z"/></svg>New<svg class="s2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.1 6.4 6.4 2.1-6.4 2.1L12 19.5l-2.1-6.4L3.5 11l6.4-2.1z"/></svg></span><h2>Meet TheoBox</h2><p>Place one of 9 Theolings on top and its Bible story begins.</p><button class="tbx-shop" id="tbxShop" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.3 7.6h11.4a1.6 1.6 0 0 1 1.58 1.35l1.5 9.5a2 2 0 0 1-1.98 2.3H5.2a2 2 0 0 1-1.98-2.3l1.5-9.5A1.6 1.6 0 0 1 6.3 7.6Z"/><path d="M8.7 7.6a3.3 3.3 0 0 1 6.6 0"/><path d="M9.2 10.6a2.8 2.8 0 0 0 5.6 0"/></svg>Shop now<svg class="ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></button></div>
+<svg class="tbx-onda" viewBox="0 0 390 {ALTO}" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="tbxGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{c['onda']}" stop-opacity="1"/><stop offset=".55" stop-color="{c['onda']}" stop-opacity=".6"/><stop offset="1" stop-color="{c['onda']}" stop-opacity="0"/></linearGradient></defs><path d="M0,16 C45,9 95,8 140,13 C190,19 250,20 300,13 C335,9 365,9 390,11 L390,{ALTO - 16} C350,{ALTO - 21} 300,{ALTO - 19} 255,{ALTO - 13} C205,{ALTO - 6} 130,{ALTO - 5} 80,{ALTO - 12} C50,{ALTO - 16} 25,{ALTO - 17} 0,{ALTO - 14} Z" fill="url(#tbxGrad)"/></svg><div class="tbx-h"><div class="tbx-tx"><span class="tbx-new"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.1 6.4 6.4 2.1-6.4 2.1L12 19.5l-2.1-6.4L3.5 11l6.4-2.1z"/></svg>New<svg class="s2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.1 6.4 6.4 2.1-6.4 2.1L12 19.5l-2.1-6.4L3.5 11l6.4-2.1z"/></svg></span><h2>Meet TheoBox</h2><p>Place one of 9 Theolings on top and its Bible story begins.</p><button class="tbx-shop" id="tbxShop" type="button" aria-label="Shop now. Opens in your browser"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.3 7.6h11.4a1.6 1.6 0 0 1 1.58 1.35l1.5 9.5a2 2 0 0 1-1.98 2.3H5.2a2 2 0 0 1-1.98-2.3l1.5-9.5A1.6 1.6 0 0 1 6.3 7.6Z"/><path d="M8.7 7.6a3.3 3.3 0 0 1 6.6 0"/><path d="M9.2 10.6a2.8 2.8 0 0 0 5.6 0"/></svg>Shop now<svg class="ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></button></div>
 <div class="hero-box" id="heroBox" aria-hidden="true"><img class="bx" src="assets/theobox/theobox-frente.webp" alt=""><span class="gl"></span><img class="hf" id="heroFig" src="assets/theobox/fig-jesus.webp" alt=""></div></div>
 <div class="tbx-row" id="tbxRow">{''.join(tiles)}</div>
 </section>'''
@@ -62,7 +62,9 @@ def estilos(c):
 #tbx .tbx-shop{{display:inline-flex;align-items:center;height:34px;margin-top:20px;padding:0 18px;border-radius:10px;background:#F5DB78;color:#06325A;font-family:'Neue Montreal',Mulish,sans-serif;font-weight:700;font-size:14px;text-align:center;box-shadow:0 4px 12px rgba(0,81,109,.12);transition:transform 120ms cubic-bezier(.2,.7,.2,1)}}
 #tbx .tbx-shop:active{{transform:scale(.97)}}
 #tbx .tbx-shop{{gap:7px;justify-content:flex-start;width:auto;padding:0 20px 0 18px;box-sizing:border-box}}
-#tbx .tbx-shop svg.ar{{width:15px;height:15px;stroke-width:2.6;margin-left:10px}}
+#tbx .tbx-shop svg.ar{{width:15px;height:15px;stroke-width:2.6;margin-left:8px}}
+.tbx-card svg.ext{{width:12px;height:12px;margin-left:4px;flex:none;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;vertical-align:-1px}}
+.tbx-card.buy .btn svg.ext{{width:13px;height:13px;margin-left:6px}}
 #tbx .tbx-shop svg{{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;flex:none}}
 .hero-box{{position:relative;height:140px;cursor:pointer;transform:scale(1.15);transform-origin:calc(100% - 8px) 100%}}
 .hero-box::before{{content:"";position:absolute;right:-16px;bottom:-18px;width:190px;height:190px;border-radius:50%;background:radial-gradient(circle,rgba(255,206,110,.38) 0%,rgba(255,236,180,0) 66%);pointer-events:none}}
@@ -104,20 +106,15 @@ def estilos(c):
 .tbx-card.buy .f1{{right:46px;bottom:60px;height:44px;transform:translateX(50%);filter:drop-shadow(0 3px 3px rgba(2,37,79,.22))}}
 .tbx-card.buy .f2{{right:64px;bottom:4px;height:36px;z-index:3;filter:drop-shadow(0 3px 3px rgba(2,37,79,.22))}}
 .tbx-card.buy .f3{{right:0;bottom:2px;height:32px;filter:drop-shadow(0 3px 3px rgba(2,37,79,.22))}}
-/* paso a la web (simulado) */
-.tbx-web{{position:absolute;inset:0;z-index:60;pointer-events:none;display:flex;justify-content:center}}
-.tbx-web .dim{{position:absolute;inset:0;background:rgba(0,8,43,.4);opacity:0;transition:opacity 300ms}}
-.tbx-web .sheet{{position:absolute;left:0;right:0;bottom:0;top:54px;background:{c['hoja']};color:#02254F;border-radius:16px 16px 0 0;transform:translateY(100%);transition:transform 360ms cubic-bezier(.2,.7,.2,1);display:flex;flex-direction:column;overflow:hidden;font-family:Mulish,sans-serif}}
-.tbx-web.open{{pointer-events:auto}} .tbx-web.open .dim{{opacity:1}} .tbx-web.open .sheet{{transform:none}}
-.tbx-web .bar{{display:grid;grid-template-columns:72px 1fr 72px;align-items:center;height:48px;padding:0 12px;background:#F2F4F7;border-bottom:1px solid rgba(2,37,79,.1)}}
-.tbx-web .bar button{{font:700 16px Mulish,sans-serif;color:#1E8DA5;background:none;border:0;height:44px;text-align:left;cursor:pointer}}
-.tbx-web .url{{justify-self:center;font-size:14px;color:#2F5B6B;font-weight:600}}
-.tbx-web .hero{{height:260px;background:#F5F1E8;display:flex;align-items:flex-end;justify-content:center;overflow:hidden}}
-.tbx-web .hero img{{max-height:240px}} .tbx-web .hero img.full{{width:100%;height:100%;max-height:none;object-fit:cover}}
-.tbx-web .in{{padding:20px}} .tbx-web small{{font-weight:700;color:#1E8DA5}}
-.tbx-web h3{{font-family:'Neue Montreal',Mulish,sans-serif;font-weight:500;font-size:24px;margin:6px 0 16px;color:#00516D}}
-.tbx-web .buy{{display:block;width:100%;height:52px;border-radius:26px;border:0;background:#F5DB78;color:#06325A;font:700 16px 'Neue Montreal',Mulish,sans-serif}}
-.tbx-web .note{{margin-top:16px;font-size:12px;color:#2F5B6B}}
+/* aviso: se abre el navegador del teléfono */
+.tbx-web{{position:absolute;left:16px;right:16px;bottom:104px;z-index:60;display:flex;justify-content:center;pointer-events:none}}
+.tbx-web .toast{{display:flex;align-items:center;gap:12px;width:100%;max-width:358px;padding:12px 16px 12px 12px;border-radius:18px;background:{c['aviso']};color:{c['aviso_tx']};box-shadow:0 12px 30px rgba(0,8,43,.35);font-family:Mulish,sans-serif;opacity:0;transform:translateY(16px) scale(.98);transition:opacity 220ms ease,transform 320ms cubic-bezier(.2,.7,.2,1)}}
+.tbx-web.open .toast{{opacity:1;transform:none}}
+.tbx-web .ico{{width:40px;height:40px;border-radius:12px;background:#F5DB78;color:#06325A;display:grid;place-items:center;flex:none}}
+.tbx-web .ico svg{{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}}
+.tbx-web b{{display:block;font:700 15px/20px 'Neue Montreal',Mulish,sans-serif}}
+.tbx-web small{{display:block;font-size:13px;line-height:18px;color:{c['aviso_sub']}}}
+body:has(.tbx-web.open) #temaBtn{{opacity:0;pointer-events:none}}
 
 #tbx.pre .tbx-card{{opacity:0;transform:translateY(14px)}}
 #tbx.pre .hero-box .hf{{opacity:0}}
@@ -127,7 +124,7 @@ def estilos(c):
 @media (prefers-reduced-motion: reduce){{#tbx *, .tbx-web *{{animation:none!important;transition:none!important}}}}
 </style>'''
 
-SCRIPT = '''<div class="tbx-web" id="tbxWeb" aria-hidden="true"><div class="dim" data-close></div><div class="sheet" role="dialog" aria-modal="true" aria-label="TheoBox on the web"><div class="bar"><button data-close>Done</button><span class="url">audiobox.theopray.com</span><span></span></div><div id="tbxWebBody" style="overflow:auto"></div></div></div>
+SCRIPT = '''<div class="tbx-web" id="tbxWeb" role="status" aria-live="polite"><div class="toast"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg></span><span><b>Opening in your browser</b><small>audiobox.theopray.com</small></span></div></div>
 <script>
 (()=>{
 const NOMBRES=%s, FIGS=%s;
@@ -164,20 +161,15 @@ row.addEventListener('pointerdown',e=>{moved=false; if(e.pointerType==='mouse')d
 row.addEventListener('pointermove',e=>{ if(!d)return; const dx=e.clientX-d.x; if(Math.abs(dx)>8){moved=true;row.classList.add('dragging');row.scrollLeft=d.s-dx} });
 const up=()=>{ if(!d)return; if(row.classList.contains('dragging')){ row.classList.remove('dragging'); let best=row.children[0]; [...row.children].forEach(c=>{ if(Math.abs(c.offsetLeft-16-row.scrollLeft)<Math.abs(best.offsetLeft-16-row.scrollLeft))best=c }); row.scrollTo({left:best.offsetLeft-16,behavior:'smooth'}) } d=null };
 row.addEventListener('pointerup',up); row.addEventListener('pointerleave',up); row.addEventListener('pointercancel',up);
-// un toque = un evento, antes de abrir la web; deslizar no cuenta
-const web=document.getElementById('tbxWeb'), body=document.getElementById('tbxWebBody');
+// un toque = un evento, luego se abre la web de TheoBox en el navegador del teléfono (Safari / Chrome), fuera de la app
+const WEB='https://audiobox.theopray.com', web=document.getElementById('tbxWeb'); let tw=null;
+function abrir(){ clearTimeout(tw); web.classList.add('open');
+  setTimeout(()=>{ if(window.ReactNativeWebView) window.ReactNativeWebView.postMessage('open:'+WEB); else window.open(WEB,'_blank','noopener'); },900);
+  tw=setTimeout(()=>web.classList.remove('open'),2600); }
 row.addEventListener('click',e=>{ const c=e.target.closest('.tbx-card'); if(!c)return; if(moved){moved=false;return}
-  const p=props(c); console.info('eng_theobox_carousel_'+p.card_id+'_click',p);
-  let img,ttl; if(p.card_id==='lifestyle'){img='<img class="full" src="assets/theobox/theobox-paso2-coloca.webp" alt="">';ttl='TheoBox'}
-  else if(p.card_id==='complete_box'){img='<img src="assets/theobox/theobox-frente.webp" alt="">';ttl='Choose your TheoBox'}
-  else {img='<img src="assets/theobox/fig-'+p.card_id+'.webp" alt="">';ttl=NOMBRES[p.card_id]}
-  body.innerHTML='<div class="hero">'+img+'</div><div class="in"><small>Preorder</small><h3>'+ttl+'</h3><button class="buy" disabled>Preorder on the website</button><p class="note">Simulated destination. Production URL to be defined (destination_id: '+p.destination_id+').</p></div>';
-  web.classList.add('open'); web.setAttribute('aria-hidden','false'); });
-document.getElementById('tbxShop').addEventListener('click',()=>{ const p={placement,section_id:'theobox_shop',cta_id:'shop_now',destination_id:'pack_selection',app_language:'en'};
-  console.info('eng_theobox_section_shop_now_click',p);
-  body.innerHTML='<div class="hero"><img src="assets/theobox/theobox-frente.webp" alt=""></div><div class="in"><small>Preorder</small><h3>Choose your TheoBox</h3><button class="buy" disabled>Preorder on the website</button><p class="note">Simulated destination. Production URL to be defined (destination_id: pack_selection).</p></div>';
-  web.classList.add('open'); web.setAttribute('aria-hidden','false'); });
-web.addEventListener('click',e=>{ if(e.target.closest('[data-close]')){web.classList.remove('open');web.setAttribute('aria-hidden','true')} });
+  const p=props(c); console.info('eng_theobox_carousel_'+p.card_id+'_click',p); abrir(); });
+document.getElementById('tbxShop').addEventListener('click',()=>{ const p={placement,section_id:'theobox_shop',cta_id:'shop_now',destination_id:'theobox_web',app_language:'en'};
+  console.info('eng_theobox_section_shop_now_click',p); abrir(); });
 })();
 </script>'''
 

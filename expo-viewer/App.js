@@ -1,12 +1,15 @@
 // Theo · visor del prototipo para Expo Go.
 // Carga el home de Theo con la sección TheoBox publicado en Vercel, a pantalla completa.
 import { useState } from 'react';
-import { View, Text, Pressable, StyleSheet } from 'react-native';
+import { View, Text, Pressable, StyleSheet, Linking } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { StatusBar } from 'expo-status-bar';
 import * as ScreenOrientation from 'expo-screen-orientation';
 
 const URL = 'https://theo-home-theobox.vercel.app/theobox.html?app=1';
+const HOST = 'theo-home-theobox.vercel.app';
+// cualquier web que no sea el prototipo se abre en el navegador del teléfono (Safari / Chrome), fuera de la app
+const abrirFuera = url => Linking.openURL(url).catch(() => {});
 
 export default function App() {
   const [error, setError] = useState(false);
@@ -34,9 +37,16 @@ export default function App() {
         overScrollMode="never"
         cacheEnabled={false}
         contentInsetAdjustmentBehavior="never"
+        setSupportMultipleWindows={false}
+        onShouldStartLoadWithRequest={req => {
+          if (req.url.startsWith('http') && !req.url.includes(HOST)) { abrirFuera(req.url); return false; }
+          return true;
+        }}
         onMessage={e => {
           // el prototipo avisa al abrir y cerrar un video: los videos solo se ven en horizontal
           const m = e.nativeEvent.data;
+          // la sección TheoBox pide abrir su web fuera de la app
+          if (m.startsWith('open:')) return abrirFuera(m.slice(5));
           if (m === 'video:on') ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE).catch(() => {});
           if (m === 'video:off') ScreenOrientation.unlockAsync().catch(() => {});
         }}

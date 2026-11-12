@@ -1,6 +1,6 @@
 # TheoBox · Today section (Carousel to TheoBox)
 
-Interactive prototype of the **TheoBox** promotional section for the Theo app's **Today** screen: it introduces the TheoBox speaker and its 9 Theolings, and sends parents to the web to buy.
+Interactive prototype of the **TheoBox** promotional section for the Theo app's **Today** screen: it introduces the TheoBox speaker and its 9 Theolings, and sends parents to the TheoBox website to buy.
 
 - **Live prototype:** https://theo-home-theobox.vercel.app
 - **Developer mode (inspect + download assets):** https://theo-home-theobox.vercel.app/theobox.html?dev
@@ -35,24 +35,28 @@ Units: **1 pt = 1 CSS px** on the 390 × 844 pt phone.
 
 Placed **right after Daily Missions** on Today (the Advent card and everything below moved down; nothing else in the home changed).
 
-1. **Header** – “✦ New ✦” label, **Meet TheoBox**, “Place one of 9 Theolings on top and its Bible story begins.” and a **Shop now** button. On the right, the TheoBox speaker with a Theoling standing on its center ring and a soft yellow glow.
+1. **Header** – “✦ New ✦” label, **Meet TheoBox**, “Place one of 9 Theolings on top and its Bible story begins.” and a **Shop now ↗** button. On the right, the TheoBox speaker with a Theoling standing on its center ring and a soft yellow glow.
 2. **Carousel** (horizontal, native scroll-snap, ~3 cards visible):
-   1. **How it works** (double width) – child placing a figure on the speaker
+   1. **How it works** (double width) – child placing a figure on the speaker, label **Learn more ↗**
    2. – 10. one square card per Theoling: Jesus, Theodore, David, Noah, Good Shepherd, Mary, Joseph, Baby Jesus, St. Michael
-   11. **Bring TheoBox home** (double width) – speaker + figures and **Choose yours →**
+   11. **Bring TheoBox home** (double width) – speaker + figures, **Choose yours ↗**, label **Shop TheoBox ↗**
 3. **Interaction** – when the row is scrolled, the first visible Theoling jumps onto the speaker in the header and the ring lights up. On first appearance the cards enter with a short stagger (disabled with *Reduce Motion*).
-4. **Tap any card or Shop now** → in-app browser to the web (simulated here; production URLs and `destination_id` values are still to be defined).
+4. **Tap anything (any card or Shop now) → the phone's default browser opens (Safari / Chrome), outside the app**, always on the same page: **https://audiobox.theopray.com**. No in-app browser / SFSafariViewController / Custom Tabs.
+   - Before leaving, a short notice slides up above the tab bar: **“Opening in your browser · audiobox.theopray.com”** (≈0.9 s, then the browser opens). Light theme: navy notice; dark theme: cream notice.
+   - The ↗ arrow on *Shop now*, *Choose yours*, *Learn more* and *Shop TheoBox* tells people beforehand that it leaves the app.
+   - Accessibility: every card and the button say “… Opens in your browser”.
+   - Native: iOS `UIApplication.shared.open(url)`, Android `Intent(ACTION_VIEW, uri)` (React Native: `Linking.openURL`).
 5. Soft wave background behind the section (two gentle curves, vertical fade into the page).
 
 ### Analytics (per Product ticket, 2026-11-10)
 
 | Event | When |
 | --- | --- |
-| `eng_theobox_carousel_<card_id>_click` | Once per deliberate tap on a card, **before** opening the web. Scrolling never counts. |
+| `eng_theobox_carousel_<card_id>_click` | Once per deliberate tap on a card, **before** opening the browser. Scrolling never counts. |
 | `eng_theobox_carousel_card_view` | Card ≥ 50 % visible for 1 continuous second, foreground, once per card per screen visit |
 | `eng_theobox_section_shop_now_click` | *Shop now* button — **not in the ticket, confirm with Product** |
 
-Properties: `placement`, `carousel_id=theobox_shop`, `card_id`, `card_position`, `creative_id`, `creative_version`, `destination_id`, `app_language`.
+Properties (`destination_id` is `theobox_web` for every card, since they all open the same page): `placement`, `carousel_id=theobox_shop`, `card_id`, `card_position`, `creative_id`, `creative_version`, `destination_id`, `app_language`.
 `card_id` values: `lifestyle`, `jesus`, `theodore`, `david`, `noah`, `good_shepherd`, `mary`, `joseph`, `baby_jesus`, `archangel_michael`, `complete_box`.
 In the prototype the events are printed to the browser console.
 
@@ -88,7 +92,7 @@ python3 -m http.server 5208     # then open http://localhost:5208/theobox.html
 ```bash
 cd expo-viewer && npm install && npx expo start --lan
 ```
-Scan the QR with the iPhone camera (same Wi-Fi). It loads the live Vercel prototype.
+Scan the QR with the iPhone camera (same Wi-Fi). It loads the live Vercel prototype; taps open the TheoBox page in Safari, as in production.
 
 ### Fonts
 
@@ -98,7 +102,7 @@ Scan the QR with the iPhone camera (same Wi-Fi). It loads the live Vercel protot
 
 ## Open items
 
-- Production purchase URLs and `destination_id` per card.
+- Confirm https://audiobox.theopray.com is the final destination (and whether to add UTM parameters per card).
 - App → web sign-in handoff (open question in the ticket).
 - Copy: “Choose yours” is shorter than the ticket's “Choose your TheoBox” to fit the card.
 - Character lines/short names to be reviewed by Content.
