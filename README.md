@@ -41,8 +41,8 @@ Placed **right after Daily Missions** on Today (the Advent card and everything b
    2. – 10. one square card per Theoling: Jesus, Theodore, David, Noah, Good Shepherd, Mary, Joseph, Baby Jesus, St. Michael
    11. **Bring TheoBox home** (double width) – speaker + figures, **Choose yours ↗**, label **Shop TheoBox ↗**
 3. **Interaction** – when the row is scrolled, the first visible Theoling jumps onto the speaker in the header and the ring lights up. On first appearance the cards enter with a short stagger (disabled with *Reduce Motion*).
-4. **Tap anything (any card or Shop now) → the phone's default browser opens (Safari / Chrome), outside the app**, always on the same web page. **The final URL is still to be shared**; the prototype uses https://audiobox.theopray.com only as a placeholder. No in-app browser / SFSafariViewController / Custom Tabs.
-   - Before leaving, a short notice slides up above the tab bar: **“Opening in your browser · audiobox.theopray.com”** (≈0.9 s, then the browser opens). Light theme: navy notice; dark theme: cream notice.
+4. **Tap anything (any card or Shop now) → the phone's default browser opens (Safari / Chrome), outside the app**, always on the same page: **https://box.theopray.com/**. No in-app browser / SFSafariViewController / Custom Tabs.
+   - Before leaving, a short notice slides up above the tab bar: **“Opening in your browser · box.theopray.com”** (≈0.9 s, then the browser opens). Light theme: navy notice; dark theme: cream notice.
    - The ↗ arrow on *Shop now*, *Choose yours*, *Learn more* and *Shop TheoBox* tells people beforehand that it leaves the app.
    - Accessibility: every card and the button say “… Opens in your browser”.
    - Native: iOS `UIApplication.shared.open(url)`, Android `Intent(ACTION_VIEW, uri)` (React Native: `Linking.openURL`).
@@ -102,7 +102,7 @@ Scan the QR with the iPhone camera (same Wi-Fi). It loads the live Vercel protot
 
 ## Open items
 
-- Final destination URL (pending; placeholder: audiobox.theopray.com) and whether to add UTM parameters per card.
+- Whether to add UTM parameters per card to https://box.theopray.com/.
 - App → web sign-in handoff (open question in the ticket).
 - Copy: “Choose yours” is shorter than the ticket's “Choose your TheoBox” to fit the card.
 - Character lines/short names to be reviewed by Content.

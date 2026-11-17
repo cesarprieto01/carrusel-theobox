@@ -93,7 +93,7 @@
     const a = assetOf(el); if (a) out.asset = { name: a.key, files: [a.key + '@2x.png', a.key + '@3x.png'] };
     const card = el.closest('.tbx-card');
     if (card) out.analytics = { click: `eng_theobox_carousel_${card.dataset.id}_click`, impression: 'eng_theobox_carousel_card_view', card_id: card.dataset.id, card_position: +card.dataset.pos, destination_id: card.dataset.dest };
-    if (el.id === 'tbxShop') out.analytics = { click: 'eng_theobox_section_shop_now_click (not in the ticket — confirm with Product)', destination_id: 'theobox_web', opens: 'external browser (audiobox.theopray.com)' };
+    if (el.id === 'tbxShop') out.analytics = { click: 'eng_theobox_section_shop_now_click (not in the ticket — confirm with Product)', destination_id: 'theobox_web', opens: 'external browser (box.theopray.com)' };
     return out;
   }
 

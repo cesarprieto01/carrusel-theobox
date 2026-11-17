@@ -124,7 +124,7 @@ body:has(.tbx-web.open) #temaBtn{{opacity:0;pointer-events:none}}
 @media (prefers-reduced-motion: reduce){{#tbx *, .tbx-web *{{animation:none!important;transition:none!important}}}}
 </style>'''
 
-SCRIPT = '''<div class="tbx-web" id="tbxWeb" role="status" aria-live="polite"><div class="toast"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg></span><span><b>Opening in your browser</b><small>audiobox.theopray.com</small></span></div></div>
+SCRIPT = '''<div class="tbx-web" id="tbxWeb" role="status" aria-live="polite"><div class="toast"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg></span><span><b>Opening in your browser</b><small>box.theopray.com</small></span></div></div>
 <script>
 (()=>{
 const NOMBRES=%s, FIGS=%s;
@@ -162,7 +162,7 @@ row.addEventListener('pointermove',e=>{ if(!d)return; const dx=e.clientX-d.x; if
 const up=()=>{ if(!d)return; if(row.classList.contains('dragging')){ row.classList.remove('dragging'); let best=row.children[0]; [...row.children].forEach(c=>{ if(Math.abs(c.offsetLeft-16-row.scrollLeft)<Math.abs(best.offsetLeft-16-row.scrollLeft))best=c }); row.scrollTo({left:best.offsetLeft-16,behavior:'smooth'}) } d=null };
 row.addEventListener('pointerup',up); row.addEventListener('pointerleave',up); row.addEventListener('pointercancel',up);
 // un toque = un evento, luego se abre la web de TheoBox en el navegador del teléfono (Safari / Chrome), fuera de la app
-const WEB='https://audiobox.theopray.com', web=document.getElementById('tbxWeb'); let tw=null;
+const WEB='https://box.theopray.com/', web=document.getElementById('tbxWeb'); let tw=null;
 function abrir(){ clearTimeout(tw); web.classList.add('open');
   setTimeout(()=>{ if(window.ReactNativeWebView) window.ReactNativeWebView.postMessage('open:'+WEB); else window.open(WEB,'_blank','noopener'); },900);
   tw=setTimeout(()=>web.classList.remove('open'),2600); }
